@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Агрогруппа — СШ № 29 г. Витебска им. В.В. Пименова</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Roboto,sans-serif;background:#f8fbf5;color:#1e2f1e;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+header{background:linear-gradient(135deg,#1e4a2b,#2d6a3e);color:#fff;padding:1rem 0;box-shadow:0 4px 12px rgba(0,0,0,.1);position:sticky;top:0;z-index:100}
+.header-content{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.logo-area{display:flex;align-items:center;gap:15px}
+.logo-img{width:125px;height:125px;background:#d9e8d0;border-radius:50%;display:flex;align-items:center;justify-content:center;border:3px solid #ffd966;overflow:hidden;flex-shrink:0}
+.logo-img img{width:100%;height:100%;object-fit:cover}
+.logo-text h1{font-size:1.4rem;line-height:1.3}
+.logo-text .subtitle{font-size:.85rem;opacity:.9}
+nav ul{display:flex;list-style:none;gap:.5rem;flex-wrap:wrap}
+.nav-btn{background:rgba(255,255,255,.12);color:#fff;border:2px solid rgba(255,255,255,.3);padding:.6rem 1.5rem;border-radius:40px;font-size:1rem;font-weight:600;cursor:pointer;transition:all .25s;text-decoration:none;display:inline-block}
+.nav-btn:hover,.nav-btn.active{background:#ffd966;color:#1e4a2b;border-color:#ffd966;transform:translateY(-2px)}
+.motto-banner{background:linear-gradient(90deg,#ffd966,#f9e79f);color:#1e4a2b;text-align:center;padding:1rem;font-size:1.5rem;font-weight:700;border-bottom:3px solid #b8860b;font-style:italic}
+section{padding:3rem 0;scroll-margin-top:100px}
+section h2{font-size:2rem;color:#1e4a2b;margin-bottom:.5rem;position:relative;display:inline-block}
+section h2::after{content:'';position:absolute;left:0;bottom:-8px;width:60%;height:4px;background:#ffd966;border-radius:2px}
+.section-desc{color:#3d5e3d;margin-bottom:2rem;font-size:1.1rem;margin-top:1rem}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:2rem}
+.card{background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 8px 24px rgba(0,30,0,.08);transition:transform .3s;display:flex;flex-direction:column;border:1px solid #e0eedb}
+.card:hover{transform:translateY(-6px)}
+
+/* ===== КВАДРАТНЫЕ ФОТО ===== */
+.card-img{position:relative;width:100%;padding-bottom:100%;height:0;background:#d9e8d0;display:block;cursor:pointer;overflow:hidden}
+.card-img img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.card:hover .card-img img{transform:scale(1.05)}
+.photo-placeholder{position:absolute;top:0;left:0;width:100%;height:100%;background:repeating-linear-gradient(45deg,#c8dfc8,#c8dfc8 10px,#b8d0b8 10px,#b8d0b8 20px);background-size:cover;background-position:center;background-repeat:no-repeat;border:2px dashed #7fa07f;transition:transform .4s}
+.card:hover .photo-placeholder{transform:scale(1.05)}
+
+.card-content{padding:1.5rem;flex-grow:1}
+.card-content h3{color:#1e4a2b;font-size:1.3rem;margin-bottom:.5rem}
+.card-content p{color:#4a6b4a;font-size:.98rem}
+
+/* ===== БУРГЕР-БЛОКИ ===== */
+.burger{margin-top:2rem;background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 8px 24px rgba(0,30,0,.08);border:1px solid #e0eedb}
+.burger+.burger{margin-top:1.25rem}
+.burger-header{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.15rem 1.5rem;cursor:pointer;user-select:none;transition:background .2s}
+.burger-header:hover{background:#f4f9f2}
+.burger-title{display:flex;align-items:center;gap:.75rem;font-size:1.15rem;font-weight:700;color:#1e4a2b;flex-wrap:wrap}
+.burger-title .icon{font-size:1.5rem;line-height:1}
+.burger-badge{font-size:.75rem;font-weight:500;color:#6b8c6b;background:#e6f0e3;padding:.15rem .6rem;border-radius:20px}
+.burger-toggle{width:38px;height:38px;border-radius:50%;background:#e6f0e3;color:#1e4a2b;border:none;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:700;flex-shrink:0;transition:transform .3s ease,background .2s;line-height:1}
+.burger.open .burger-toggle{transform:rotate(180deg);background:#ffd966}
+.burger-body{max-height:0;overflow:hidden;transition:max-height .5s ease,padding .3s ease;padding:0 1.5rem;background:#fff}
+.burger.open .burger-body{max-height:8000px;padding:0 1.5rem 1.5rem}
+
+.presentation-frame{position:relative;width:100%;padding-bottom:75%;height:0;overflow:hidden;border-radius:16px;background:#eef5ec;border:2px dashed #7fa07f}
+.presentation-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:16px}
+.presentation-placeholder{position:absolute;top:0;left:0;width:100%;height:100%;background:repeating-linear-gradient(45deg,#e8f4e4,#e8f4e4 10px,#d9e8d0 10px,#d9e8d0 20px);display:flex;align-items:center;justify-content:center;color:#6b8c6b;font-size:2.5rem}
+.burger-note{text-align:center;color:#6b8c6b;font-size:.9rem;margin-top:.9rem}
+
+.newspaper-wrap{max-width:800px;margin:0 auto}
+.newspaper-frame{position:relative;width:100%;padding-bottom:141.42%;height:0;overflow:hidden;border-radius:16px;background:#eef5ec;border:2px dashed #7fa07f;box-shadow:0 4px 16px rgba(0,30,0,.06)}
+.newspaper-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:16px}
+.newspaper-placeholder{position:absolute;top:0;left:0;width:100%;height:100%;background:repeating-linear-gradient(45deg,#e8f4e4,#e8f4e4 10px,#d9e8d0 10px,#d9e8d0 20px);display:flex;align-items:center;justify-content:center;color:#6b8c6b;font-size:3rem}
+
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,20,0,.85);z-index:1000;align-items:center;justify-content:center;padding:20px}
+.modal.active{display:flex}
+.modal-content{max-width:90vw;max-height:90vh;position:relative}
+.modal-content img{max-width:100%;max-height:90vh;border-radius:16px;object-fit:contain}
+.modal-close{position:absolute;top:-40px;right:0;background:#ffd966;color:#1e4a2b;border:none;width:40px;height:40px;border-radius:50%;font-size:1.5rem;font-weight:bold;cursor:pointer}
+
+/* ВИКТОРИНА */
+.quiz-wrap{max-width:800px;margin:0 auto;background:#f8fbf5;border-radius:20px;padding:2rem;border:1px solid #e0eedb}
+.quiz-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem;font-size:.95rem;font-weight:600;color:#3d5e3d;flex-wrap:wrap;gap:.5rem}
+.quiz-progress{height:10px;background:#e6f0e3;border-radius:20px;overflow:hidden;margin-bottom:1.5rem}
+.quiz-progress-bar{height:100%;width:0%;background:linear-gradient(90deg,#ffd966,#2d6a3e);border-radius:20px;transition:width .4s}
+.quiz-round{display:inline-block;background:#ffd966;color:#1e4a2b;padding:.3rem 1rem;border-radius:20px;font-size:.82rem;font-weight:700;margin-bottom:1rem}
+.quiz-question{font-size:1.15rem;font-weight:700;color:#1e4a2b;margin-bottom:1.5rem;min-height:3rem;line-height:1.45}
+.quiz-options{display:flex;flex-direction:column;gap:.75rem}
+.quiz-option{background:#fff;border:2px solid #d4e6d0;border-radius:16px;padding:.9rem 1.2rem;font-size:1rem;font-weight:500;color:#1e3a26;cursor:pointer;text-align:left;transition:all .2s;display:flex;align-items:center;gap:.75rem}
+.quiz-option:hover:not(:disabled){background:#e8f4e4;border-color:#2d6a3e;transform:translateX(4px)}
+.quiz-option .letter{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:#d9e8d0;color:#1e4a2b;font-weight:700;flex-shrink:0;font-size:.9rem}
+.quiz-option.correct{background:#d6f0d0;border-color:#2d8a3e}
+.quiz-option.correct .letter{background:#2d8a3e;color:#fff}
+.quiz-option.wrong{background:#fbe0dd;border-color:#c0392b}
+.quiz-option.wrong .letter{background:#c0392b;color:#fff}
+.quiz-option:disabled{cursor:default}
+.quiz-feedback{margin-top:1.25rem;padding:.9rem 1.2rem;border-radius:14px;font-weight:600;font-size:.95rem;display:none;line-height:1.5}
+.quiz-feedback.show{display:block}
+.quiz-feedback.ok{background:#d6f0d0;color:#1e4a2b;border-left:5px solid #2d8a3e}
+.quiz-feedback.no{background:#fbe0dd;color:#7a1f15;border-left:5px solid #c0392b}
+.quiz-next{margin-top:1.5rem;display:none;background:linear-gradient(135deg,#2d6a3e,#1e4a2b);color:#fff;border:none;padding:.9rem 2rem;border-radius:40px;font-size:1rem;font-weight:700;cursor:pointer;transition:all .25s;width:100%}
+.quiz-next.show{display:block}
+.quiz-next:hover{background:#ffd966;color:#1e4a2b}
+.quiz-result{text-align:center;display:none}
+.quiz-result.show{display:block}
+.quiz-result .emoji{font-size:4rem;margin-bottom:.5rem}
+.quiz-result h3{color:#1e4a2b;font-size:1.6rem;margin-bottom:.75rem}
+.quiz-result .score{font-size:2.8rem;font-weight:800;color:#2d6a3e;margin:.5rem 0}
+.quiz-result .score small{font-size:1.1rem;color:#6b8c6b;font-weight:600}
+.quiz-result p{color:#4a6b4a;margin-bottom:1.5rem;font-size:1.05rem}
+.quiz-restart{background:#ffd966;color:#1e4a2b;border:none;padding:.9rem 2rem;border-radius:40px;font-size:1rem;font-weight:700;cursor:pointer}
+.quiz-restart:hover{background:#1e4a2b;color:#ffd966}
+
+footer{background:#1e3a26;color:#d9e8d0;text-align:center;padding:2rem 0;margin-top:2rem;font-size:.95rem}
+footer strong{color:#ffd966}
+
+@media(max-width:768px){.header-content{flex-direction:column;align-items:stretch}.logo-area{justify-content:center;text-align:center}nav ul{justify-content:center}.nav-btn{padding:.5rem 1rem;font-size:.9rem}.motto-banner{font-size:1.1rem}section h2{font-size:1.6rem}.cards-grid{grid-template-columns:1fr}.quiz-wrap{padding:1.25rem}.quiz-question{font-size:1.02rem}.burger-header{padding:1rem}.burger-body{padding:0 1rem}.burger.open .burger-body{padding:0 1rem 1rem}.burger-title{font-size:1rem}}
+html{scroll-behavior:smooth}
+</style>
+</head>
+<body>
+
+<header>
+<div class="container header-content">
+<div class="logo-area">
+<div class="logo-img">
+<!-- ЭМБЛЕМА: <img src="эмблема.png" alt="Эмблема"> -->
+<img src="https://lh3.googleusercontent.com/d/1bAdY4vkP0z91UaX3Uyu-3smcLp1CnjEg=w1920?authuser=0" alt="Агрогруппа">
+</div>
+<div class="logo-text">
+<h1>Агрогруппа</h1>
+<div class="subtitle">Средняя школа № 29 г. Витебска<br>имени В.В. Пименова</div>
+</div>
+</div>
+<nav>
+<ul>
+<li><a href="#about" class="nav-btn">О нас</a></li>
+<li><a href="#events" class="nav-btn">Мероприятия</a></li>
+<li><a href="#excursions" class="nav-btn">Экскурсии</a></li>
+<li><a href="#quiz" class="nav-btn">Викторина</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<div class="motto-banner">От семени знаний — к урожаю побед!</div>
+
+<section id="about">
+<div class="container">
+<h2>О нас</h2>
+<p class="section-desc">Агрогруппа — это объединение учащихся, увлечённых сельским хозяйством, биологией и экологией.</p>
+<div class="cards-grid">
+<div class="card"><div class="card-img" onclick="openModal(this)"><div class="photo-placeholder"></div></div><div class="card-content"><h3>Наша команда</h3><p>Дружные ребята, которые любят природу и труд: Авилина Надежда; Бастенков Алексей; Дмитроченко София ; Каратанов Назар ; Мираш Карина ; Папазов Кирилл</p></div></div>
+<div class="card"><div class="card-img" onclick="openModal(this)"><div class="photo-placeholder"><img src="https://lh3.googleusercontent.com/d/16MpRBufdxTgH1XsEQCoKXnd90_nilEKU=w1920?authuser=0" alt="Практика"></div></div><div class="card-content"><h3>Практические занятия</h3><p>Изучаем видовое разнообразие растений</p></div></div>
+<div class="card"><div class="card-img" onclick="openModal(this)"><div class="photo-placeholder"><img src="https://lh3.googleusercontent.com/d/1Ax92GzAyn0L4H8Ifan8d0WuZ9DNEtj1t=w1920?authuser=0" alt="Практика"></div></div><div class="card-content"><h3>Наши достижения</h3><p>Диплом III степени в районном форуме классов аграрной направленности</p></div></div>
+</div>
+
+<!-- БУРГЕР: ПРЕЗЕНТАЦИЯ -->
+<div class="burger" id="burgerPresentation">
+<div class="burger-header" onclick="toggleBurger('burgerPresentation')">
+<div class="burger-title"><span class="icon">📊</span> Наша презентация <span class="burger-badge">4:3</span></div>
+<button class="burger-toggle" aria-label="Развернуть">▾</button>
+</div>
+<div class="burger-body">
+<div class="presentation-frame">
+<!-- ПРЕЗЕНТАЦИЯ: <iframe src="https://docs.google.com/presentation/d/ВАШ_ID/embed?start=false&loop=false&delayms=3000" allowfullscreen="true"></iframe> -->
+<div class="presentation-placeholder">
+📽️ Место для презентации (4:3)<br>
+<small><iframe src="https://drive.google.com/file/d/1zWECguX7VCMCkk69m6LalBxQotJ7GKBy/preview" width=640 height=300></iframe></small></iframe></div>
+</div>
+<p class="burger-note"></p>
+</div>
+</div>
+
+<!-- БУРГЕР: ГАЗЕТА -->
+<div class="burger" id="burgerNewspaper">
+<div class="burger-header" onclick="toggleBurger('burgerNewspaper')">
+<div class="burger-title"><span class="icon">📰</span> Наша газета <span class="burger-badge">A4</span></div>
+<button class="burger-toggle" aria-label="Развернуть">▾</button>
+</div>
+<div class="burger-body">
+<div class="newspaper-wrap">
+<div class="newspaper-frame">
+<!-- ГАЗЕТА: <iframe src="https://drive.google.com/file/d/ВАШ_ID/preview" allowfullscreen="true"></iframe> -->
+<div class="newspaper-placeholder">📰
+<small><iframe src="https://drive.google.com/file/d/1MJJwBhnnA7-_w5iEvWo9pJrbGSkWnQTK/preview" width="640" height="1067"></iframe></small>
+</div>
+</div>
+<p class="burger-note"></p>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<section id="events" style="background:#fff">
+<div class="container">
+<h2>Мероприятия</h2>
+<p class="section-desc">В течение года мы проводим множество интересных и полезных событий.</p>
+<div class="cards-grid">
+<div class="card"><div class="card-img" onclick="openModal(this)"><div class="photo-placeholder"></div></div><div class="card-content"><h3>Осенняя ярмарка «Урожай-2025»</h3><p>Выставка овощей, фруктов и поделок из природного материала.</p></div></div>
+<div class="card"><div class="card-img" onclick="openModal(this)"><div class="photo-placeholder"></div></div><div class="card-content"><h3>Экологический десант</h3><p>Уборка территории, посадка деревьев, изготовление кормушек.</p></div></div>
+<div class="card"><div class="card-img" onclick="openModal(this)"><div class="photo-placeholder"></div></div><div class="card-content"><h3>Научно-практическая конференция</h3><p>Защита исследовательских проектов по агрономии и экологии.</p></div></div>
+</div>
+</div>
+</section>
+
+<section id="excursions">
+<div class="container">
+<h2>Экскурсии</h2>
+<p class="section-desc">Экскурсии на предприятия, в ботанические сады и на фермы помогают увидеть профессию в действии.</p>
+<div class="cards-grid">
+<div class="card"><div class="card-img" onclick="openModal(this)"><div class="photo-placeholder"></div></div><div class="card-content"><h3>Городокский государственный аграрно-технический колледж</h3><p>Экскурсия по учебным корпусам и лабораториям</p></div></div>
+<div class="card"><div class="card-img" onclick="openModal(this)"><div class="photo-placeholder"></div></div><div class="card-content"><h3>Ботанический сад</h3><p>Экскурсия по оранжереям, знакомство с редкими растениями</p></div></div>
+<div class="card"><div class="card-img" onclick="openModal(this)"><div class="photo-placeholder"><img src="https://lh3.googleusercontent.com/d/1vg46BLBdaZmzGHrwWSGU2tIBdsoTO1Gf=w1920?authuser=0" alt="Рудаково"></div></div><div class="card-content"><h3>РУП "Рудаково"</h3><p>Посещение современного тепличного хозяйства</p></div></div>
+<div class="card"><div class="card-img" onclick="openModal(this)"><div class="photo-placeholder"></div></div><div class="card-content"><h3>МТЗ — Минский тракторный завод</h3><p>Знакомство с легендарным брендом BELARUS: как собирают тракторы для полей всего мира.</p></div></div>
+<div class="card"><div class="card-img" onclick="openModal(this)"><div class="photo-placeholder"></div></div><div class="card-content"><h3>ОАО «Бабушкина крынка»</h3><p>Молочное производство: от фермы до прилавка — как рождается вкусный и полезный продукт.</p></div></div>
+<div class="card"><div class="card-img" onclick="openModal(this)"><div class="photo-placeholder"></div></div><div class="card-content"><h3>Выставка «Белагро»</h3><p>Крупнейшая агропромышленная выставка страны: техника, животные, инновации в АПК.</p></div></div>
+</div>
+</div>
+</section>
+
+<section id="quiz" style="background:#fff">
+<div class="container">
+<h2>Викторина</h2>
+<p class="section-desc">Проверьте свои знания в области агрономии, животноводства и современных технологий АПК Беларуси!</p>
+
+<div class="burger" id="burgerQuiz">
+<div class="burger-header" onclick="toggleBurger('burgerQuiz')">
+<div class="burger-title"><span class="icon">🎯</span> Викторина «АгроЭрудит» <span class="burger-badge">11 вопросов</span></div>
+<button class="burger-toggle" aria-label="Развернуть">▾</button>
+</div>
+<div class="burger-body">
+<div class="quiz-wrap">
+<div class="quiz-top">
+<span id="quizCounter">Вопрос 1 из 11</span>
+<span id="quizScore">Баллы: 0 / 23</span>
+</div>
+<div class="quiz-progress"><div class="quiz-progress-bar" id="quizProgressBar"></div></div>
+<div id="quizQuestionBlock">
+<div class="quiz-round" id="quizRound">Раунд 1 · 1 балл</div>
+<div class="quiz-question" id="quizQuestion">Загрузка…</div>
+<div class="quiz-options" id="quizOptions"></div>
+<div class="quiz-feedback" id="quizFeedback"></div>
+<button class="quiz-next" id="quizNext">Следующий вопрос →</button>
+</div>
+<div class="quiz-result" id="quizResult">
+<div class="emoji" id="resultEmoji">🌿</div>
+<h3 id="resultTitle">Результат</h3>
+<div class="score" id="resultScore">0 / 23</div>
+<p id="resultText"></p>
+<button class="quiz-restart" onclick="restartQuiz()">Пройти заново 🔄</button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<footer>
+<div class="container">
+<p><strong>Агрогруппа</strong> | Средняя школа № 29 г. Витебска имени В.В. Пименова</p>
+<p style="margin-top:.5rem;font-size:.85rem;opacity:.8">От семени знаний — к урожаю побед! 🌾</p>
+</div>
+</footer>
+
+<div id="photoModal" class="modal" onclick="closeModalOnBackground(event)">
+<div class="modal-content">
+<button class="modal-close" onclick="closeModal()">×</button>
+<img id="modalImage" src="" alt="Просмотр фото">
+</div>
+</div>
+
+<script>
+function toggleBurger(id){var el=document.getElementById(id);if(el)el.classList.toggle('open');}
+
+var sections=document.querySelectorAll('section');
+var navButtons=document.querySelectorAll('.nav-btn');
+function updateActiveNav(){
+  var current='';var sp=window.scrollY+120;
+  sections.forEach(function(s){if(sp>=s.offsetTop&&sp<s.offsetTop+s.offsetHeight)current=s.id;});
+  navButtons.forEach(function(b){b.classList.remove('active');if(b.getAttribute('href')==='#'+current)b.classList.add('active');});
+}
+window.addEventListener('scroll',updateActiveNav);
+window.addEventListener('load',updateActiveNav);
+
+function openModal(el){
+  var m=document.getElementById('photoModal');var mi=document.getElementById('modalImage');
+  var img=el.querySelector('img');
+  if(img&&img.src){mi.src=img.src;m.classList.add('active');document.body.style.overflow='hidden';}
+}
+function closeModal(){document.getElementById('photoModal').classList.remove('active');document.body.style.overflow='';}
+function closeModalOnBackground(e){if(e.target===e.currentTarget)closeModal();}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+document.querySelectorAll('.nav-btn').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var h=this.getAttribute('href');
+    if(h&&h.startsWith('#')){e.preventDefault();var t=document.querySelector(h);if(t)t.scrollIntoView({behavior:'smooth'});}
+  });
+});
+
+var quizData=[
+{r:"Разминка: Агросфера Беларуси",p:1,q:"Назовите главную хлебную культуру Беларуси.",o:["Озимая пшеница","Озимая рожь","Ячмень","Овёс"],c:1,e:"Главная хлебная культура Беларуси — озимая рожь."},
+{r:"Разминка: Агросфера Беларуси",p:1,q:"Какая область Беларуси традиционно лидирует по сбору сахарной свёклы?",o:["Минская","Гродненская","Брестская","Витебская"],c:1,e:"Гродненская область традиционно лидирует по сбору сахарной свёклы."},
+{r:"Разминка: Агросфера Беларуси",p:1,q:"Какой белорусский бренд известен производством мощных колёсных тракторов по всему миру?",o:["Гомсельмаш","МТЗ / BELARUS","Амкодор","Лидагропроммаш"],c:1,e:"МТЗ (BELARUS) — всемирно известный бренд тракторов из Минска."},
+{r:"Разминка: Агросфера Беларуси",p:1,q:"Какое растение называют «белорусским шёлком»?",o:["Хлопок","Лён-долгунец","Шелковица","Конопля"],c:1,e:"Лён-долгунец называют «белорусским шёлком»."},
+{r:"Разминка: Агросфера Беларуси",p:1,q:"Как называется крупнейшая сельскохозяйственная выставка, ежегодно проходящая в Минске в начале лета?",o:["«Белагро»","«Агро-Минск»","«Хлеб Беларуси»","«Полесье-Экспо»"],c:0,e:"«Белагро» — крупнейшая агропромышленная выставка в Минске."},
+{r:"Агрономия и биотехнологии",p:2,q:"Что такое сидераты (зелёные удобрения)?",o:["Декоративные цветы для клумб","Растения, улучшающие структуру почвы и обогащающие её азотом (люпин, горчица, редька масличная)","Сорные травы, которые удаляют с полей","Лекарственные растения"],c:1,e:"Сидераты — это люпин, горчица, редька масличная. Они улучшают структуру почвы, обогащают её азотом и заменяют химические удобрения."},
+{r:"Агрономия и биотехнологии",p:2,q:"Что такое точное земледелие (Smart Farming)?",o:["Ручной труд на полях без техники","Выращивание культур только в теплицах","Система управления с GPS-навигацией, датчиками, дронами и ИИ для точечного внесения удобрений","Способ полива дождеванием"],c:2,e:"Точное земледелие — система управления с ИИ, GPS-навигацией, датчиками и дронами для точечного внесения удобрений."},
+{r:"Животноводство и ветеринария",p:3,q:"Какая порода крупного рогатого скота является основной для молочного стада Беларуси?",o:["Симментальская","Чёрно-пёстрая","Голштинская","Айрширская"],c:1,e:"Чёрно-пёстрая порода — основная для молочного стада Беларуси."},
+{r:"Животноводство и ветеринария",p:3,q:"Какое уникальное животное, занесённое в Красную книгу РБ, успешно расселяется и рассматривается для полувольного разведения?",o:["Лось","Зубр","Бурый медведь","Благородный олень"],c:1,e:"Зубр — редкое животное из Красной книги РБ, символ Беловежской пущи."},
+{r:"Животноводство и ветеринария",p:3,q:"Что такое силосование и сенажирование?",o:["Способы консервирования сочных кормов без доступа кислорода для сохранения витаминов","Виды пастьбы скота","Породы молочных коров","Способы машинного доения"],c:0,e:"Силосование и сенажирование — консервирование сочных кормов без доступа кислорода. Качественные корма — залог успеха в молочном скотоводстве."},
+{r:"Чёрный ящик",p:5,q:"«В этом ящике находится продукт переработки важной технической культуры Беларуси. Он богат омега-3 кислотами, широко используется в диетическом питании, а жмых после прессования идёт на высокобелковый корм скоту. Сама культура цветёт красивыми голубыми цветами». Что в чёрном ящике?",o:["Подсолнечное масло","Льняное масло / семена льна","Оливковое масло","Рапсовое масло"],c:1,e:"Это льняное масло и семена льна. Лён-долгунец цветёт голубыми цветами, богат омега-3, а жмых — ценный корм скоту."}
+];
+var MAX_POINTS=quizData.reduce(function(s,q){return s+q.p;},0);
+var qCurrent=0,qScore=0,qAnswered=false;
+var qQuestionEl=document.getElementById('quizQuestion');
+var qOptionsEl=document.getElementById('quizOptions');
+var qFeedbackEl=document.getElementById('quizFeedback');
+var qNextBtn=document.getElementById('quizNext');
+var qCounterEl=document.getElementById('quizCounter');
+var qScoreEl=document.getElementById('quizScore');
+var qProgressBar=document.getElementById('quizProgressBar');
+var qQuestionBlock=document.getElementById('quizQuestionBlock');
+var qResultBlock=document.getElementById('quizResult');
+var qRoundEl=document.getElementById('quizRound');
+
+function renderQuizQuestion(){
+  qAnswered=false;var q=quizData[qCurrent];
+  qRoundEl.textContent=q.r+' · '+q.p+(q.p===1?' балл':' балла');
+  qQuestionEl.textContent=q.q;
+  qCounterEl.textContent='Вопрос '+(qCurrent+1)+' из '+quizData.length;
+  qScoreEl.textContent='Баллы: '+qScore+' / '+MAX_POINTS;
+  qProgressBar.style.width=((qCurrent/quizData.length)*100)+'%';
+  qOptionsEl.innerHTML='';
+  var letters=['А','Б','В','Г'];
+  q.o.forEach(function(opt,i){
+    var btn=document.createElement('button');
+    btn.className='quiz-option';
+    btn.innerHTML='<span class="letter">'+letters[i]+'</span><span>'+opt+'</span>';
+    btn.addEventListener('click',function(){selectAnswer(i,btn);});
+    qOptionsEl.appendChild(btn);
+  });
+  qFeedbackEl.className='quiz-feedback';qFeedbackEl.textContent='';
+  qNextBtn.classList.remove('show');
+  qNextBtn.textContent=(qCurrent===quizData.length-1)?'Показать результат 🎯':'Следующий вопрос →';
+}
+
+function selectAnswer(index,btn){
+  if(qAnswered)return;qAnswered=true;
+  var q=quizData[qCurrent];
+  var allBtns=qOptionsEl.querySelectorAll('.quiz-option');
+  allBtns.forEach(function(b){b.disabled=true;});
+  if(index===q.c){
+    btn.classList.add('correct');qScore+=q.p;
+    qFeedbackEl.className='quiz-feedback ok show';
+    qFeedbackEl.textContent='✅ Верно! +'+q.p+(q.p===1?' балл':' балла')+'. '+q.e;
+  }else{
+    btn.classList.add('wrong');allBtns[q.c].classList.add('correct');
+    qFeedbackEl.className='quiz-feedback no show';
+    qFeedbackEl.textContent='❌ Неверно. Правильный ответ: «'+q.o[q.c]+'». '+q.e;
+  }
+  qScoreEl.textContent='Баллы: '+qScore+' / '+MAX_POINTS;
+  qNextBtn.classList.add('show');
+}
+
+qNextBtn.addEventListener('click',function(){
+  qCurrent++;
+  if(qCurrent<quizData.length){renderQuizQuestion();}
+  else{showQuizResult();}
+});
+
+function showQuizResult(){
+  qQuestionBlock.style.display='none';
+  qResultBlock.classList.add('show');
+  qProgressBar.style.width='100%';
+  var percent=Math.round((qScore/MAX_POINTS)*100);
+  document.getElementById('resultScore').innerHTML=qScore+' / '+MAX_POINTS+' <small>('+percent+'%)</small>';
+  var emoji,title,text;
+  if(percent>=90){emoji='🏆';title='Звание «Лучший будущий аграрий»!';text='Блестящий результат — вы настоящий АгроЭрудит!';}
+  else if(percent>=70){emoji='🌾';title='Отличный результат!';text='Вы уверенно разбираетесь в агрономии и технологиях АПК. Есть куда расти!';}
+  else if(percent>=50){emoji='🌱';title='Хорошее начало!';text='Основы вы знаете, но стоит повторить материал по раундам.';}
+  else{emoji='🌿';title='Есть над чем поработать';text='Каждое семя знаний даёт всходы. Попробуйте ещё раз!';}
+  document.getElementById('resultEmoji').textContent=emoji;
+  document.getElementById('resultTitle').textContent=title;
+  document.getElementById('resultText').textContent=text;
+}
+
+function restartQuiz(){
+  qCurrent=0;qScore=0;qAnswered=false;
+  qResultBlock.classList.remove('show');
+  qQuestionBlock.style.display='block';
+  qProgressBar.style.width='0%';
+  renderQuizQuestion();
+}
+renderQuizQuestion();
+</script>
+</body>
+</html>
